@@ -115,4 +115,14 @@ void bridge(){
   leds[middle_top_left_corner + 10] = CRGB::Black;
   segment.fadeUp(10, CRGB::White);
 
+  SegmentList squares = SegmentList(&get_left_square(leds));
+  squares.add(&get_right_square(leds));
+  squares.setAllToColor(CRGB::Cyan);
+
+  for (int i = 0; i <= 3; i++){
+    trace_upwards(leds, 3, 15, CRGB::Cyan);
+  }
+
+  trace_square_with_delays(leds, 5, 200, 15, CRGB::Cyan, CRGB::Cyan, CRGB::Cyan, CRGB::Cyan);
+
 }
