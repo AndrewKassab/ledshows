@@ -8,16 +8,18 @@ void setup(){
 
 void loop(){
 
-  delay(3100);
+  delay(3000);
 
   // vrooooom
-  SegmentList middleTops = SegmentList(&get_middle_top_left(leds));
-  middleTops.add(&get_middle_top_right(leds));
+  LightSegment middleTopLeft = get_middle_top_left(leds);
+  LightSegment middleTopRight = get_middle_top_right(leds);
+  SegmentList middleTops = SegmentList(&middleTopLeft);
+  middleTops.add(&middleTopRight);
   boolean reverseTable[2] = {false, true};
   middleTops.traceAllDontRemain(5, 26, reverseTable, CRGB::Cyan);
 
   // all my friends are talking... 
-  fade_all_lights_up_in_sets(leds, 13, CRGB::Cyan, CRGB::Cyan);
+  fade_all_lights_up_in_sets(leds, 8, CRGB::Cyan, CRGB::Cyan);
 
   delay(30);
 
@@ -57,7 +59,9 @@ void loop(){
   }
 
   delay(10000);
+
 }
+
 
 void bridge(){
 
@@ -123,6 +127,6 @@ void bridge(){
     trace_upwards(leds, 3, 15, CRGB::Cyan);
   }
 
-  trace_square_with_delays(leds, 5, 200, 15, CRGB::Cyan, CRGB::Cyan, CRGB::Cyan, CRGB::Cyan);
+  trace_square_with_delays(leds, 5, 200, 15, CRGB::Cyan, CRGB::Cyan);
 
 }

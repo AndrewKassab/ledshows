@@ -40,7 +40,7 @@ void loop() {
   for ( int i = 0; i < 2; i++ ){
     corners_cycle_towards_center(leds_list, 550, CRGB::ForestGreen, CRGB::DeepPink);
     allLights.fadeToBlack(10);
-    corners_cycle_towards_center(leds_list, 550, CRGB::Gold, CRGB::Purple);
+    corners_cycle_towards_center(leds_list, 550, CRGB::Gold, CRGB::Cyan);
     allLights.fadeToBlack(10);
   }
 

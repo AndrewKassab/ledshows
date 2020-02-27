@@ -75,12 +75,12 @@ void loop(){
     top_to_bottom(leds, 190, CRGB::Blue, CRGB::SkyBlue);
   }
 
-  delay(410);
+  delay(350);
   FastLED.clear();
 
   // TODO: light up corners in middle for extra effect
-  fade_squares_up_down(leds, 1, 50, CRGB::Cyan);
-  fade_squares_up_down(leds, 1, 50, CRGB::Blue);
+  fade_squares_up_down(leds, 10, 50, CRGB::Cyan);
+  fade_squares_up_down(leds, 10, 50, CRGB::Blue);
   for ( int i = 0; i <= 5; i++ ){
     trace_upwards(leds, 3, 31, CRGB::Cyan);
   }
