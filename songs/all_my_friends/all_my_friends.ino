@@ -13,6 +13,7 @@ void loop(){
   // vrooooom
   LightSegment middleTopLeft = get_middle_top_left(leds);
   LightSegment middleTopRight = get_middle_top_right(leds);
+  LightSegment allLights = get_all_lights(leds);
   SegmentList middleTops = SegmentList(&middleTopLeft);
   middleTops.add(&middleTopRight);
   boolean reverseTable[2] = {false, true};
@@ -29,14 +30,17 @@ void loop(){
     delay(560);
   }
 
+  allLights.turnOff();
+
   // tell me what's going on...?
   for (int i = 0; i <= 7; i++){
     alternate_sides_and_tops_with_alternating_corner_colors(leds, 560, CRGB::Red, CRGB::Purple);
     delay(560);
+    allLights.turnOff();
   }
 
   FastLED.clear();
-  get_all_lights(leds).fadeUp(9, CRGB::Cyan);
+  allLights.fadeUp(1, CRGB::Cyan);
 
   bridge();
 
@@ -66,12 +70,14 @@ void loop(){
 void bridge(){
 
   // They
-  SegmentList middleTopBars = SegmentList(&get_middle_top_left(leds));
-  middleTopBars.add(&get_middle_top_right(leds));
+  LightSegment middleTopLeft = get_middle_top_left(leds);
+  LightSegment middleTopRight = get_middle_top_right(leds);
+  SegmentList middleTopBars = SegmentList(&middleTopLeft);
+  middleTopBars.add(&middleTopRight);
   boolean reverseTable[2] = {true, false};
   middleTopBars.traceAllAndRemain(2,6,reverseTable, CRGB::Black);
 
-  delay(130);
+  delay(100);
 
   LightSegment startLeftBridgeToMiddleTopLeft = LightSegment(leds, left_bottom_right_corner, middle_top_left_corner);
   LightSegment middleTopRightToRightBridgeEnd = LightSegment(leds, middle_top_right_corner, right_bottom_left_corner);
@@ -81,7 +87,7 @@ void bridge(){
   middleSidesToBridges.add(&middleTopRightToRightBridgeEnd);
   middleSidesToBridges.traceAllAndRemain(2,30,reverseTable, CRGB::Black);
 
-  delay(180);
+  delay(130);
 
   // They're makin messes
   square_color_trace(leds, 1, 1, CRGB::Red);
@@ -89,13 +95,13 @@ void bridge(){
   square_color_trace(leds, 1, 1, CRGB::Green);
   square_color_trace(leds, 1, 1, CRGB::Purple);
 
-  delay(100);
+  delay(20);
 
   // duna na na naaaa
   leds[middle_bottom_left_corner] = CRGB::White;
   leds[middle_bottom_right_corner] = CRGB::White;
   FastLED.show();
-  delay(210);
+  delay(220);
   leds[middle_bottom_left_corner] = CRGB::Black;
   leds[middle_bottom_right_corner] = CRGB::Black;
   leds[middle_bottom_right_corner - 10] = CRGB::White;
@@ -117,11 +123,8 @@ void bridge(){
   LightSegment segment = LightSegment(leds, middle_top_middle-2, middle_top_middle+2);
   leds[middle_top_right_corner - 10] = CRGB::Black;
   leds[middle_top_left_corner + 10] = CRGB::Black;
-  segment.fadeUp(10, CRGB::White);
-
-  SegmentList squares = SegmentList(&get_left_square(leds));
-  squares.add(&get_right_square(leds));
-  squares.setAllToColor(CRGB::Cyan);
+  segment.fadeUp(5, CRGB::White);
+  segment.fadeToBlack(2);
 
   for (int i = 0; i <= 3; i++){
     trace_upwards(leds, 3, 15, CRGB::Cyan);
