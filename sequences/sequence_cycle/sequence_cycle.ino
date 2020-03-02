@@ -65,26 +65,24 @@ void loop() {
     delay(600);
     sides_to_middle(leds_list, 600, CRGB::Blue, CRGB::Gold, CRGB::Cyan);
     delay(600);
-    top_to_bottom(leds_list, 600, CRGB::Red, CRGB::Green);
-    delay(600);
-    sides_to_middle(leds_list, 600, CRGB::Blue, CRGB::Gold, CRGB::Cyan);
-    delay(600);
   }
 
-  allLights.fadeToBlack(15);
+  allLights.fadeToBlack(10);
 
   squares_top_bottom_dash_left_right(leds_list, 12, CRGB::Blue, CRGB::Gold);
   squares_top_bottom_dash_left_right(leds_list, 12, CRGB::Blue, CRGB::Gold);
-  trace_square_with_delays(leds_list, 6, 12, 40, CRGB::Blue, CRGB::Gold);
+  trace_square_with_delays(leds_list, 7, 12, 50, CRGB::Blue, CRGB::Gold);
   allLights.turnOff();
-  trace_square_with_delays(leds_list, 6, 12, 40, CRGB::Blue, CRGB::Gold);
+  trace_square_with_delays(leds_list, 7, 12, 50, CRGB::Blue, CRGB::Gold);
   allLights.turnOff();
   squares_top_bottom_dash_left_right(leds_list, 12, CRGB::Tomato, CRGB::Turquoise);
   squares_top_bottom_dash_left_right(leds_list, 12, CRGB::Tomato, CRGB::Turquoise);
-  trace_square_with_delays(leds_list, 6, 12, 40, CRGB::Tomato, CRGB::Turquoise);
+  trace_square_with_delays(leds_list, 7, 12, 50, CRGB::Tomato, CRGB::Turquoise);
   allLights.turnOff();
-  trace_square_with_delays(leds_list, 6, 12, 40, CRGB::Tomato, CRGB::Turquoise);
+  trace_square_with_delays(leds_list, 7, 12, 50, CRGB::Tomato, CRGB::Turquoise);
   allLights.turnOff();
+  squares_top_bottom_dash_left_right(leds_list, 12, CRGB::Red, CRGB::Purple);
+  squares_top_bottom_dash_left_right(leds_list, 12, CRGB::Red, CRGB::Purple);
 
   allLights.turnOff();
 
