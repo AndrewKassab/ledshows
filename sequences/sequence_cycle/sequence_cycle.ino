@@ -14,16 +14,11 @@ void loop() {
   square_color_trace(leds_list, 1, 14, CRGB::Purple);
   square_color_trace(leds_list, 1, 14, CRGB::Yellow);
   square_color_trace(leds_list, 1, 14, CRGB::Green);
-  square_color_trace(leds_list, 1, 14, CRGB::ForestGreen);
   square_color_trace(leds_list, 1, 14, CRGB::Blue);
-  square_color_trace(leds_list, 1, 14, CRGB::DeepPink);
-  square_color_trace(leds_list, 1, 14, CRGB::Cyan);
+  square_color_trace(leds_list, 1, 14, CRGB::ForestGreen);
   square_color_trace(leds_list, 1, 14, CRGB::Red);
 
   color_trace_bridges_to_center(leds_list, 14, CRGB::Red);
-  color_trace_outwards_from_center(leds_list, 14, CRGB::Blue);
-  square_color_trace(leds_list, 1, 14, CRGB::Purple);
-  color_trace_bridges_to_center(leds_list, 14, CRGB::Purple);
   color_trace_outwards_from_center(leds_list, 14, CRGB::Cyan);
 
   allLights.fadeToBlack(15);
@@ -37,7 +32,7 @@ void loop() {
 
   allLights.fadeToBlack(5);
 
-  for ( int i = 0; i <= 3; i++ ){
+  for ( int i = 0; i <= 2; i++ ){
     up_down_trace(leds_list, 4, 18, CRGB::DeepPink, CRGB::Cyan);
     up_down_trace(leds_list, 4, 18, CRGB::DeepPink, CRGB::Cyan);
     allLights.turnOff();
@@ -46,8 +41,11 @@ void loop() {
     allLights.turnOff();
   }
 
-  allLights.turnOff();
+  blink_all_lights(leds_list, CRGB::White, 250);
+  blink_all_lights(leds_list, CRGB::Blue, 250);
+  blink_all_lights(leds_list, CRGB::Gold, 250);
 
+  allLights.fadeToBlack(15);
 
   for ( int i = 0; i < 2; i++ ){
     corners_cycle_towards_center(leds_list, 550, CRGB::ForestGreen, CRGB::DeepPink);
