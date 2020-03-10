@@ -33,41 +33,45 @@ void loop(){
   allLights.turnOff();
 
   // tell me what's going on...?
-  for (int i = 0; i <= 7; i++){
+  for (int i = 0; i <= 6; i++){
     alternate_sides_and_tops_with_alternating_corner_colors(leds, 560, CRGB::Red, CRGB::Purple);
     delay(560);
     allLights.turnOff();
   }
-
-  FastLED.clear();
-  allLights.fadeUp(1, CRGB::Cyan);
+  
+  alternate_sides_and_tops_with_alternating_corner_colors(leds, 560, CRGB::Red, CRGB::Purple);
+  allLights.turnOff();
+  delay(330);
 
   bridge();
 
-  for ( int i = 0; i <= 3; i++){
-    trace_upwards(leds, 3, 10, CRGB::Cyan);
+  delay(570);
+
+  for ( int i = 0; i <= 6; i++ ){
+    square_side_cycle(leds, 560, CRGB::Blue, CRGB::Cyan, CRGB::Blue, CRGB::Cyan);
+    delay(560);
   }
 
-  trace_square_with_delays(leds, 5, 150, 5, CRGB::Cyan, CRGB::Cyan);
+  square_side_cycle(leds, 560, CRGB::Blue, CRGB::Cyan, CRGB::Blue, CRGB::Cyan);
+  delay(530);
 
-  SegmentList squares = SegmentList(&get_left_square(leds));
-  squares.add(&get_right_square(leds));
-
-  squares.setAllToColor(CRGB::Cyan);
-
-  delay(400);
-  FastLED.clear();
-
-  for (int i = 0; i <= 3; i++){
-    sides_to_middle(leds, 560, CRGB::Cyan, CRGB::Cyan, CRGB::Cyan);
+  for ( int i = 0; i <= 3; i++ ){
+    allLights.turnOff();
+    corners_cycle_towards_center(leds, 550, CRGB::Purple, CRGB::DeepPink);
+    delay(550);
   }
 
-  delay(10000);
+  bridge();
 
 }
 
 
 void bridge(){
+
+  LightSegment allLights = get_all_lights(leds);
+
+  FastLED.clear();
+  allLights.fadeUp(1, CRGB::Cyan);
 
   // They
   LightSegment middleTopLeft = get_middle_top_left(leds);
@@ -90,11 +94,8 @@ void bridge(){
   delay(130);
 
   // They're makin messes
-  square_color_trace(leds, 1, 1, CRGB::Red);
-  square_color_trace(leds, 1, 1, CRGB::Blue);
-  square_color_trace(leds, 1, 1, CRGB::Green);
-  square_color_trace(leds, 1, 1, CRGB::Purple);
-
+  square_color_trace(leds, 1, 11, CRGB::Green);
+  square_color_trace(leds, 1, 11, CRGB::Red);
   delay(20);
 
   // duna na na naaaa
@@ -102,34 +103,36 @@ void bridge(){
   leds[middle_bottom_right_corner] = CRGB::White;
   FastLED.show();
   delay(220);
-  leds[middle_bottom_left_corner] = CRGB::Black;
-  leds[middle_bottom_right_corner] = CRGB::Black;
   leds[middle_bottom_right_corner - 10] = CRGB::White;
   leds[middle_bottom_left_corner + 10] = CRGB::White;
   FastLED.show();
   delay(270);
   leds[middle_top_left_corner] = CRGB::White;
   leds[middle_top_right_corner] = CRGB::White;
-  leds[middle_bottom_right_corner - 10] = CRGB::Black;
-  leds[middle_bottom_left_corner + 10] = CRGB::Black;
   FastLED.show();
-  delay(290);
+  delay(260);
   leds[middle_top_right_corner - 10] = CRGB::White;
   leds[middle_top_left_corner + 10] = CRGB::White;
-  leds[middle_top_left_corner] = CRGB::Black;
-  leds[middle_top_right_corner] = CRGB::Black;
+  FastLED.show();
+  delay(300);
+  LightSegment segment = LightSegment(leds, middle_top_middle-2, middle_top_middle+2);
+  segment.setToColor(CRGB::White);
   FastLED.show();
   delay(320);
-  LightSegment segment = LightSegment(leds, middle_top_middle-2, middle_top_middle+2);
-  leds[middle_top_right_corner - 10] = CRGB::Black;
-  leds[middle_top_left_corner + 10] = CRGB::Black;
-  segment.fadeUp(5, CRGB::White);
-  segment.fadeToBlack(2);
+  allLights.fadeToBlack(12);
 
-  for (int i = 0; i <= 3; i++){
-    trace_upwards(leds, 3, 15, CRGB::Cyan);
-  }
+  squares_top_bottom_dash_left_right(leds, 13, CRGB::Red, CRGB::Blue);
+  squares_top_bottom_dash_left_right(leds, 13, CRGB::DeepPink, CRGB::Purple);
+  squares_top_bottom_dash_left_right(leds, 13, CRGB::Red, CRGB::Blue);
+  squares_top_bottom_dash_left_right(leds, 13, CRGB::DeepPink, CRGB::Purple);
 
-  trace_square_with_delays(leds, 5, 200, 15, CRGB::Cyan, CRGB::Cyan);
+  trace_square_with_delays(leds, 5, 11, 55, CRGB::Cyan, CRGB::Cyan);
+
+  LightSegment leftSquare = get_left_square(leds);
+  LightSegment rightSquare = get_right_square(leds);
+  SegmentList squares = SegmentList(&leftSquare);
+  squares.add(&rightSquare);
+  squares.setAllToColor(CRGB::Cyan);
+  FastLED.show();
 
 }
