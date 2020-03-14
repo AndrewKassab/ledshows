@@ -28,13 +28,16 @@ void loop() {
 
   for ( int i = 0; i < 4; i++ ){
     FastLED.clear();
-    switch_between_sets_of_lights(leds_list, 450, CRGB::Gold);
+    switch_between_sets_of_lights(leds_list, 500, CRGB::Gold);
     FastLED.clear();
-    switch_between_sets_of_lights(leds_list, 450, CRGB::Cyan);
+    delay(500);
+    switch_between_sets_of_lights(leds_list, 500, CRGB::Cyan);
     FastLED.clear();
-    switch_between_sets_of_lights(leds_list, 450, CRGB::White);
+    delay(500);
+    switch_between_sets_of_lights(leds_list, 500, CRGB::White);
     FastLED.clear();
-    switch_between_sets_of_lights(leds_list, 450, CRGB::Fuchsia);
+    delay(500);
+    switch_between_sets_of_lights(leds_list, 500, CRGB::Fuchsia);
   }
 
   allLights.fadeToBlack(15);
@@ -62,11 +65,11 @@ void loop() {
 
   corners_cycle_towards_center(leds_list, 500, CRGB::ForestGreen, CRGB::DeepPink);
   allLights.fadeToBlack(13);
-  corners_cycle_towards_center(leds_list, 500, CRGB::Gold, CRGB::Cyan);
-  allLights.fadeToBlack(13);
   corners_cycle_towards_center(leds_list, 500, CRGB::Red, CRGB::Green);
   allLights.fadeToBlack(13);
-  corners_cycle_towards_center(leds_list, 500, CRGB::Fuchsia, CRGB::White);
+  corners_cycle_towards_center(leds_list, 500, CRGB::Fuchsia, CRGB::Blue);
+  allLights.fadeToBlack(13);
+  corners_cycle_towards_center(leds_list, 500, CRGB::Gold, CRGB::Cyan);
   allLights.fadeToBlack(22);
 
   squares_left_right_dash_up_down(leds_list, 12, CRGB::Red, CRGB::Blue);
@@ -89,7 +92,7 @@ void loop() {
 
   allLights.fadeToBlack(25);
 
-  square_cycle_speed_up_rainbow(leds_list, 260, 20, 15, 30);
+  square_cycle_speed_up_rainbow(leds_list, 260, 20, 12, 35);
 
   allLights.fadeToBlack(20);
 
