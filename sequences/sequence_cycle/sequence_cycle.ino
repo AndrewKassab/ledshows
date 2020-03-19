@@ -10,6 +10,7 @@ void setup()
 void loop() {
 
   LightSegment allLights = get_all_lights(leds_list);
+  FastLED.setBrightness(200);
 
   square_color_trace(leds_list, 1, 14, CRGB::Purple);
   square_color_trace(leds_list, 1, 14, CRGB::Yellow);
@@ -22,44 +23,48 @@ void loop() {
   color_trace_outwards_from_center(leds_list, 14, CRGB::Cyan);
   square_color_trace(leds_list, 1, 14, CRGB::Blue);
   color_trace_bridges_to_center(leds_list, 14, CRGB::Blue);
-  color_trace_outwards_from_center(leds_list, 14, CRGB::Cyan);
+  color_trace_outwards_from_center(leds_list, 14, CRGB::Green);
 
   allLights.fadeToBlack(15);
 
   for ( int i = 0; i < 4; i++ ){
     FastLED.clear();
-    switch_between_sets_of_lights(leds_list, 500, CRGB::Gold);
+    switch_between_sets_of_lights(leds_list, 600, CRGB::Cyan);
     FastLED.clear();
-    delay(500);
-    switch_between_sets_of_lights(leds_list, 500, CRGB::Cyan);
+    delay(600);
+    switch_between_sets_of_lights(leds_list, 600, CRGB::Gold);
     FastLED.clear();
-    delay(500);
-    switch_between_sets_of_lights(leds_list, 500, CRGB::White);
+    delay(600);
+    switch_between_sets_of_lights(leds_list, 600, CRGB::White);
     FastLED.clear();
-    delay(500);
-    switch_between_sets_of_lights(leds_list, 500, CRGB::Fuchsia);
+    delay(600);
+    switch_between_sets_of_lights(leds_list, 600, CRGB::Fuchsia);
+    delay(600);
   }
 
-  allLights.fadeToBlack(15);
+  allLights.fadeToBlack(8);
 
-  for ( int i = 0; i <= 2; i++ ){
+  for ( int i = 0; i <= 3; i++ ){
     allLights.turnOff();
     up_down_trace(leds_list, 5, 16, CRGB::DeepPink, CRGB::Cyan);
-    up_down_trace(leds_list, 5, 16, CRGB::DeepPink, CRGB::Cyan);
+    up_down_trace(leds_list, 5, 16, CRGB::ForestGreen, CRGB::Fuchsia);
     allLights.turnOff();
-    left_right_trace(leds_list, 5, 16, CRGB::ForestGreen, CRGB::Purple);
-    left_right_trace(leds_list, 5, 16, CRGB::ForestGreen, CRGB::Purple);
+    left_right_trace(leds_list, 5, 16, CRGB::Gold, CRGB::Blue);
+    left_right_trace(leds_list, 5, 16, CRGB::Green, CRGB::White);
   }
 
   allLights.fadeToBlack(20);
 
-  blink_all_lights(leds_list, CRGB::White, 250);
+  blink_all_lights(leds_list, CRGB::Gold, 250);
   delay(250);
   blink_all_lights(leds_list, CRGB::Blue, 250);
   delay(250);
-  blink_all_lights(leds_list, CRGB::Gold, 250);
+  blink_all_lights(leds_list, CRGB::White, 250);
   delay(250);
   blink_all_lights(leds_list, CRGB::DeepPink, 250);
+  delay(250);
+  blink_all_lights(leds_list, CRGB::Green, 250);
+  delay(250);
 
   allLights.fadeToBlack(20);
 
@@ -70,13 +75,14 @@ void loop() {
   corners_cycle_towards_center(leds_list, 500, CRGB::Fuchsia, CRGB::Blue);
   allLights.fadeToBlack(13);
   corners_cycle_towards_center(leds_list, 500, CRGB::Gold, CRGB::Cyan);
-  allLights.fadeToBlack(22);
+  allLights.fadeToBlack(13);
 
   squares_left_right_dash_up_down(leds_list, 12, CRGB::Red, CRGB::Blue);
   squares_left_right_dash_up_down(leds_list, 12, CRGB::DeepPink, CRGB::Cyan);
   squares_left_right_dash_up_down(leds_list, 12, CRGB::Gold, CRGB::ForestGreen);
   squares_left_right_dash_up_down(leds_list, 12, CRGB::Red, CRGB::Blue);
-
+  squares_left_right_dash_up_down(leds_list, 12, CRGB::DeepPink, CRGB::Cyan);
+  squares_left_right_dash_up_down(leds_list, 12, CRGB::Gold, CRGB::ForestGreen);
   delay(450);
 
   for ( int i = 0; i <= 2; i++ ){
@@ -92,7 +98,7 @@ void loop() {
 
   allLights.fadeToBlack(25);
 
-  square_cycle_speed_up_rainbow(leds_list, 260, 20, 12, 35);
+  square_cycle_speed_up_rainbow(leds_list, 250, 25, 5, 50);
 
   allLights.fadeToBlack(20);
 
@@ -110,7 +116,11 @@ void loop() {
   allLights.turnOff();
   squares_top_bottom_dash_left_right(leds_list, 12, CRGB::Red, CRGB::Purple);
   squares_top_bottom_dash_left_right(leds_list, 12, CRGB::Red, CRGB::Purple);
-
+  trace_square_with_delays(leds_list, 10, 8, 30, CRGB::Red, CRGB::Purple);
   allLights.turnOff();
+  trace_square_with_delays(leds_list, 10, 8, 30, CRGB::Red, CRGB::Purple);
+  allLights.turnOff();
+  squares_top_bottom_dash_left_right(leds_list, 12, CRGB::Blue, CRGB::Gold);
+  squares_top_bottom_dash_left_right(leds_list, 12, CRGB::Blue, CRGB::Gold);
 
 }
