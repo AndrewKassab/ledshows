@@ -1,3 +1,4 @@
+#include <time.h>
 #include <sequences.hpp>
 
 CRGB leds_list[NUM_LEDS];
@@ -10,7 +11,12 @@ void setup()
 void loop() {
 
   LightSegment allLights = get_all_lights(leds_list);
-  FastLED.setBrightness(200);
+
+  time_t theTime = time(NULL);
+  struct tm *aTime = localtime(&theTime);
+  int hour = aTime->tm_hour;
+
+  FastLED.setBrightness(130);
 
   square_color_trace(leds_list, 1, 14, CRGB::Purple);
   square_color_trace(leds_list, 1, 14, CRGB::Yellow);
@@ -23,7 +29,7 @@ void loop() {
   color_trace_outwards_from_center(leds_list, 14, CRGB::Cyan);
   square_color_trace(leds_list, 1, 14, CRGB::Blue);
   color_trace_bridges_to_center(leds_list, 14, CRGB::Blue);
-  color_trace_outwards_from_center(leds_list, 14, CRGB::Green);
+  color_trace_outwards_from_center(leds_list, 14, CRGB::ForestGreen);
 
   allLights.fadeToBlack(15);
 
@@ -61,20 +67,22 @@ void loop() {
   delay(250);
   blink_all_lights(leds_list, CRGB::White, 250);
   delay(250);
-  blink_all_lights(leds_list, CRGB::DeepPink, 250);
+  blink_all_lights(leds_list, CRGB::Gold, 250);
   delay(250);
-  blink_all_lights(leds_list, CRGB::Green, 250);
+  blink_all_lights(leds_list, CRGB::Cyan, 250);
   delay(250);
 
   allLights.fadeToBlack(20);
 
-  corners_cycle_towards_center(leds_list, 500, CRGB::ForestGreen, CRGB::DeepPink);
+  square_cycle_speed_up_rainbow(leds_list, 275, 25, 7, 225); 
+
+  allLights.fadeToBlack(20);
+
+  corners_cycle_towards_center(leds_list, 475, CRGB::ForestGreen, CRGB::DeepPink);
   allLights.fadeToBlack(13);
-  corners_cycle_towards_center(leds_list, 500, CRGB::Red, CRGB::Green);
+  corners_cycle_towards_center(leds_list, 475, CRGB::Fuchsia, CRGB::Blue);
   allLights.fadeToBlack(13);
-  corners_cycle_towards_center(leds_list, 500, CRGB::Fuchsia, CRGB::Blue);
-  allLights.fadeToBlack(13);
-  corners_cycle_towards_center(leds_list, 500, CRGB::Gold, CRGB::Cyan);
+  corners_cycle_towards_center(leds_list, 475, CRGB::Gold, CRGB::Cyan);
   allLights.fadeToBlack(13);
 
   squares_left_right_dash_up_down(leds_list, 12, CRGB::Red, CRGB::Blue);
@@ -85,7 +93,17 @@ void loop() {
   squares_left_right_dash_up_down(leds_list, 12, CRGB::Gold, CRGB::ForestGreen);
   delay(450);
 
-  for ( int i = 0; i <= 2; i++ ){
+
+  for (int i = 0; i <= 3; i++){
+    tripple_swap_downwards(leds_list, 450, CRGB::Green, CRGB::Blue, CRGB::Red);
+    delay(450);
+  }
+  for (int i = 0; i <= 3; i++){
+    tripple_swap_upwards(leds_list, 450, CRGB::Green, CRGB::Blue, CRGB::Red);
+    delay(450);
+  }
+
+  for (int i = 0; i <= 2; i++ ){
     sides_to_middle(leds_list, 450, CRGB::Blue, CRGB::Gold, CRGB::Cyan);
     delay(525);
     top_to_bottom(leds_list, 450, CRGB::Red, CRGB::Green);
@@ -98,9 +116,14 @@ void loop() {
 
   allLights.fadeToBlack(25);
 
-  square_cycle_speed_up_rainbow(leds_list, 250, 25, 5, 50);
+  LightSegment leftSquare = get_left_square(leds_list);
+  LightSegment rightSquare = get_right_square(leds_list);
+  SegmentList squares = SegmentList(&leftSquare);
+  squares.add(&rightSquare);
+  squares.fadeAllIn(10, CRGB::Red);
+  squares.rainbowFade(2500);
 
-  allLights.fadeToBlack(20);
+  squares.fadeAllDown(25);
 
   squares_top_bottom_dash_left_right(leds_list, 12, CRGB::Blue, CRGB::Gold);
   squares_top_bottom_dash_left_right(leds_list, 12, CRGB::Blue, CRGB::Gold);
