@@ -13,8 +13,8 @@ void loop(){
   FastLED.clear();
   FastLED.show();
 
-  // 820 for half speed
-  // 420 normal
+  // 420 normal / lyric video
+  // 8090 for music video but end is cut off
   delay(420);
 
   blink_all_lights_with_ending(leds,CRGB::White, 200);

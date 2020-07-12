@@ -93,16 +93,6 @@ void loop() {
   squares_left_right_dash_up_down(leds_list, 12, CRGB::Gold, CRGB::ForestGreen);
   delay(450);
 
-
-  for (int i = 0; i <= 3; i++){
-    tripple_swap_downwards(leds_list, 450, CRGB::Green, CRGB::Blue, CRGB::Red);
-    delay(450);
-  }
-  for (int i = 0; i <= 3; i++){
-    tripple_swap_upwards(leds_list, 450, CRGB::Green, CRGB::Blue, CRGB::Red);
-    delay(450);
-  }
-
   for (int i = 0; i <= 2; i++ ){
     sides_to_middle(leds_list, 450, CRGB::Blue, CRGB::Gold, CRGB::Cyan);
     delay(525);
