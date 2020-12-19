@@ -14,7 +14,7 @@ void loop(){
   FastLED.setBrightness(150);
 
   // TODO: intro
-  delay(11950);
+  delay(12050);
 
   int delayTime = 250;
 
