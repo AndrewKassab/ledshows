@@ -76,7 +76,7 @@ void loop(){
 
   allLights.fadeToBlack(85); 
 
-  squares_left_right_dash_up_down(leds, 5, CRGB::Blue, CRGB::Red);
+  left_right_dash_up_down(leds, 5, CRGB::Blue, CRGB::Red);
 
   delay(200);
 
@@ -138,10 +138,10 @@ void loop(){
   delay(320);
   allLights.fadeToBlack(12);
 
-  squares_top_bottom_dash_left_right(leds, 13, CRGB::Red, CRGB::Blue);
-  squares_top_bottom_dash_left_right(leds, 13, CRGB::Gold, CRGB::Purple);
-  squares_top_bottom_dash_left_right(leds, 13, CRGB::Red, CRGB::Blue);
-  squares_top_bottom_dash_left_right(leds, 13, CRGB::Gold, CRGB::Purple);
+  top_bottom_dash_left_right(leds, 13, CRGB::Red, CRGB::Blue);
+  top_bottom_dash_left_right(leds, 13, CRGB::Gold, CRGB::Purple);
+  top_bottom_dash_left_right(leds, 13, CRGB::Red, CRGB::Blue);
+  top_bottom_dash_left_right(leds, 13, CRGB::Gold, CRGB::Purple);
 
   for ( int i = 0; i <= 1; i++){
     square_side_cycle(leds, 112, CRGB::Blue, CRGB::Green, CRGB::Red, CRGB::Gold);
@@ -164,7 +164,7 @@ void loop(){
   squares.setAllToColor(CRGB::Cyan);
   FastLED.show();
 
-  delay(510);
+  delay(530);
 
   allLights.turnOff();
 
@@ -206,7 +206,7 @@ void loop(){
   allLights.setToColor(CRGB::Green);
   FastLED.show();
   delay(160);
-  allLights.fadeToBlack(10);
+  allLights.fadeToBlack(18);
 
 
 
@@ -267,10 +267,10 @@ void bridge(){
   delay(320);
   allLights.fadeToBlack(12);
 
-  squares_top_bottom_dash_left_right(leds, 13, CRGB::Blue, CRGB::Red);
-  squares_top_bottom_dash_left_right(leds, 13, CRGB::Gold, CRGB::Purple);
-  squares_top_bottom_dash_left_right(leds, 13, CRGB::Red, CRGB::Blue);
-  squares_top_bottom_dash_left_right(leds, 13, CRGB::Gold, CRGB::Purple);
+  top_bottom_dash_left_right(leds, 13, CRGB::Blue, CRGB::Red);
+  top_bottom_dash_left_right(leds, 13, CRGB::Gold, CRGB::Purple);
+  top_bottom_dash_left_right(leds, 13, CRGB::Red, CRGB::Blue);
+  top_bottom_dash_left_right(leds, 13, CRGB::Gold, CRGB::Purple);
 
   trace_square_with_delays(leds, 5, 11, 55, CRGB::Cyan, CRGB::Cyan);
 

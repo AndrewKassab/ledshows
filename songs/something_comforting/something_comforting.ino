@@ -59,15 +59,15 @@ void loop(){
   delay(407);
   top_to_bottom(leds, 410, CRGB::Blue, CRGB::SkyBlue);
   allLights.turnOff();
-  squares_top_bottom_dash_left_right(leds, 3, CRGB::Blue, CRGB::SkyBlue);
-  squares_top_bottom_dash_left_right(leds, 3, CRGB::SkyBlue, CRGB::Blue);
+  top_bottom_dash_left_right(leds, 3, CRGB::Blue, CRGB::SkyBlue);
+  top_bottom_dash_left_right(leds, 3, CRGB::SkyBlue, CRGB::Blue);
   FastLED.clear();
 
   // beem beem, beem beem, beem beem boo boo 
   for ( int i = 0; i < 3; i++ ){
-    squares_left_right_dash_up_down(leds, 2, CRGB::Red, CRGB::Cyan);
+    left_right_dash_up_down(leds, 2, CRGB::Red, CRGB::Cyan);
     delay(120);
-    squares_top_bottom_dash_left_right(leds, 2, CRGB::Green, CRGB::Purple);
+    top_bottom_dash_left_right(leds, 2, CRGB::Green, CRGB::Purple);
     delay(100);
     trace_square_with_delays(leds, 7, 4, 145, CRGB::SkyBlue, CRGB::SkyBlue);
     delay(25);
@@ -136,8 +136,8 @@ void loop(){
   delay(200);
   blink_all_lights(leds, CRGB::Cyan, 200);
   FastLED.clear();
-  squares_top_bottom_dash_left_right(leds, 1, CRGB::Red, CRGB::Blue);
-  squares_top_bottom_dash_left_right(leds, 1, CRGB::Red, CRGB::Blue);
+  top_bottom_dash_left_right(leds, 1, CRGB::Red, CRGB::Blue);
+  top_bottom_dash_left_right(leds, 1, CRGB::Red, CRGB::Blue);
 
   for (int i = 0; i <= 34; i++){
     FastLED.clear();
@@ -193,9 +193,9 @@ void loop(){
   allLights.fadeToBlack(29);
 
   for ( int i = 0; i < 3; i++ ){
-    squares_left_right_dash_up_down(leds, 2, CRGB::Red, CRGB::Cyan);
+    left_right_dash_up_down(leds, 2, CRGB::Red, CRGB::Cyan);
     delay(120);
-    squares_top_bottom_dash_left_right(leds, 2, CRGB::Green, CRGB::Purple);
+    top_bottom_dash_left_right(leds, 2, CRGB::Green, CRGB::Purple);
     delay(100);
     trace_square_with_delays(leds, 7, 4, 145, CRGB::SkyBlue, CRGB::SkyBlue);
     delay(25);
