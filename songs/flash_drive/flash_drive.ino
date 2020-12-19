@@ -233,6 +233,7 @@ void loop(){
   delay(4600);
   delayTime = 250;
 
+  // 0:31
   leds[left_top_right_corner] = CRGB(r,g,b);
   leds[left_bottom_left_corner] = CRGB(r,g,b);
   leds[right_top_left_corner] = CRGB(r,g,b);
@@ -334,7 +335,100 @@ void loop(){
   leds[left_bottom_left_corner + 14] = CRGB::Black;
   leds[right_bottom_right_corner - 7] = CRGB::Black;
   FastLED.show();
+  delay(1000);
+
+  // 0:33
+
+  leds[left_top_left_corner + 10] = CRGB::(r,g,b);
+  leds[left_top_right_corner - 10] = CRGB::(r,g,b);
+  leds[left_top_right_corner + 10] = CRGB::(r,g,b);
+  leds[left_bottom_left_corner + 10] = CRGB::(r,g,b);
+  leds[right_top_left_corner + 10] = CRGB::(r,g,b);
+  leds[right_top_right_corner - 10] = CRGB::(r,g,b);
+  leds[right_top_right_corner + 10] = CRGB::(r,g,b);
+  leds[right_bottom_left_corner + 10] = CRGB::(r,g,b);
+  leds[left_top_right_corner] = CRGB::Black;
+  leds[left_bottom_left_corner] = CRGB::Black;
+  leds[right_top_left_corner] = CRGB::Black;
+  leds[right_bottom_right_corner] = CRGB::Black;
+  leds[left_top_left_corner] = CRGB::Black;
+  leds[left_bottom_right_corner] = CRGB::Black;
+  leds[right_top_right_corner] = CRGB::Black;
+  leds[right_bottom_left_corner] = CRGB::Black;
+  FastLED.show();
   delay(delayTime);
+  leds[middle_bottom_left_corner] = CRGB(r,g,b);
+  leds[middle_bottom_right_corner] = CRGB(r,g,b);
+  leds[left_bottom_left_corner] = CRGB(r,g,b);
+  leds[left_bottom_right_corner] = CRGB(r,g,b);
+  leds[right_bottom_left_corner] = CRGB(r,g,b);
+  leds[right_bottom_right_corner] = CRGB(r,g,b);
+  FastLED.show();
+  delay(delayTime);
+  leds[middle_top_left_corner] = CRGB(r,g,b);
+  leds[middle_top_right_corner] = CRGB(r,g,b);
+  leds[left_top_left_corner] = CRGB(r,g,b);
+  leds[left_top_right_corner] = CRGB(r,g,b);
+  leds[right_top_left_corner] = CRGB(r,g,b);
+  leds[right_top_right_corner] = CRGB(r,g,b);
+  FastLED.show();
+  delay(delayTime);
+  leds[middle_bottom_left_corner] = CRGB::Black;
+  leds[middle_bottom_right_corner] = CRGB::Black;
+  leds[left_bottom_left_corner] = CRGB::Black;
+  leds[left_bottom_right_corner] = CRGB::Black;
+  leds[right_bottom_left_corner] = CRGB::Black;
+  leds[right_bottom_right_corner] = CRGB::Black;
+  leds[middle_top_left_corner] = CRGB::Black;
+  leds[middle_top_right_corner] = CRGB::Black;
+  leds[left_top_left_corner] = CRGB::Black;
+  leds[left_top_right_corner] = CRGB::Black;
+  leds[right_top_left_corner] = CRGB::Black;
+  leds[right_top_right_corner] = CRGB::Black;
+  FastLED.show();
+
+  delay(1700);
+
+  delayTime = 175;
+  
+  leds[left_top_right_corner] = CRGB::(r,g,b);
+  leds[right_top_left_corner] = CRGB::(r,g,b);
+  FastLED.show();
+  delay(delayTime);
+  leds[left_top_left_corner] = CRGB::(r,g,b);
+  leds[right_top_right_corner] = CRGB::(r,g,b);
+  FastLED.show();
+  delay(delayTime);
+  leds[left_bottom_left_corner] = CRGB::(r,g,b);
+  leds[right_bottom_right_corner] = CRGB::(r,g,b);
+  FastLED.show();
+  delay(300);
+  leds[left_bottom_right_corner] = CRGB::(r,g,b);
+  leds[right_bottom_left_corner] = CRGB::(r,g,b);
+  delay(250);
+  FastLED.show();
+  leds[left_top_left_corner + 10] = CRGB::::Black;
+  leds[left_top_right_corner - 10] = CRGB::::Black;
+  leds[left_top_right_corner + 10] = CRGB::::Black;
+  leds[left_bottom_left_corner + 10] = CRGB::::Black;
+  leds[right_top_left_corner + 10] = CRGB::::Black;
+  leds[right_top_right_corner - 10] = CRGB::::Black;
+  leds[right_top_right_corner + 10] = CRGB::::Black;
+  leds[right_bottom_left_corner + 10] = CRGB::::Black;
+  leds[middle_bottom_left_corner] = CRGB(r,g,b);
+  leds[middle_bottom_right_corner] = CRGB(r,g,b);
+  leds[left_bottom_left_corner] = CRGB(r,g,b);
+  leds[left_bottom_right_corner] = CRGB(r,g,b);
+  leds[right_bottom_left_corner] = CRGB(r,g,b);
+  leds[right_bottom_right_corner] = CRGB(r,g,b);
+  leds[middle_top_left_corner] = CRGB(r,g,b);
+  leds[middle_top_right_corner] = CRGB(r,g,b);
+  leds[middle_top_left_corner + 10] = CRGB::Black;
+  leds[middle_top_right_corner - 10] = CRGB::Black;
+  leds[middle_top_middle] = CRGB::Black;
+  leds[middle_bottom_left_corner + 10] = CRGB::Black;
+  leds[middle_bottom_right_corner - 10] = CRGB::Black;
+  FastLED.show();
 
 
 
