@@ -449,42 +449,24 @@ void loop(){
   // 0:38
   fourBeatLoop();
 
-  CRGB colorOne = CRGB::Blue;
-  CRGB colorTwo = CRGB::Red;
+
+  CRGB colors[8] = {CRGB::Blue, CRGB::Red, CRGB::Gold, CRGB::Green, CRGB::Cyan, CRGB::DeepPink, CRGB::White, CRGB::Purple};
+  CRGB colorOne = colors[1];
+  CRGB colorTwo = colors[0];
 
   // 0:44
   // TODO: Figure out required number of iterations
   for (int i = 0; i < 25; i++ ) {
-    for (int i = 0; i < leds.length; i++) {
-      if (i % 2 == 0) {
-        leds[i] = colorOne;
+    for (int j = 0; j < sizeof(leds)/sizeof(leds[0]); j++) {
+      if (j % 2 == 0) {
+        leds[j] = colorOne;
       } else {
-        leds[i] = colorTwo;
+        leds[j] = colorTwo;
       }
     }
     FastLED.show();
     colorTwo = colorOne;
-    switch(colorOne) {
-      case CRGB::Blue:
-        colorOne = CRGB::Gold;
-        break; //optional
-      case CRGB::Gold:
-        colorOne = CRGB::Green;
-        break;
-      case CRGB::Green:
-        colorOne = CRGB::Pink;
-        break;
-      case CRGB::Pink:
-        colorOne = CRGB::Cyan;
-        break;
-      case CRGB::Cyan:
-        colorOne = CRGB::Purple;
-        break;
-      case CRGB::Purple;
-        colorOne = CRGB::White;
-        break;
-    }
-    delay(50-i);
+    colorOne = colors[i % 8];
   }
 
   // 0:50
