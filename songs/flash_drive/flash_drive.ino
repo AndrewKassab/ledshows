@@ -391,6 +391,7 @@ void loop(){
 
   delayTime = 175;
   
+  // 0:35
   leds[left_top_right_corner] = CRGB::(r,g,b);
   leds[right_top_left_corner] = CRGB::(r,g,b);
   FastLED.show();
@@ -407,14 +408,14 @@ void loop(){
   leds[right_bottom_left_corner] = CRGB::(r,g,b);
   delay(250);
   FastLED.show();
-  leds[left_top_left_corner + 10] = CRGB::::Black;
-  leds[left_top_right_corner - 10] = CRGB::::Black;
-  leds[left_top_right_corner + 10] = CRGB::::Black;
-  leds[left_bottom_left_corner + 10] = CRGB::::Black;
-  leds[right_top_left_corner + 10] = CRGB::::Black;
-  leds[right_top_right_corner - 10] = CRGB::::Black;
-  leds[right_top_right_corner + 10] = CRGB::::Black;
-  leds[right_bottom_left_corner + 10] = CRGB::::Black;
+  leds[left_top_left_corner + 10] = CRGB::Black;
+  leds[left_top_right_corner - 10] = CRGB::Black;
+  leds[left_top_right_corner + 10] = CRGB::Black;
+  leds[left_bottom_left_corner + 10] = CRGB::Black;
+  leds[right_top_left_corner + 10] = CRGB::Black;
+  leds[right_top_right_corner - 10] = CRGB::Black;
+  leds[right_top_right_corner + 10] = CRGB::Black;
+  leds[right_bottom_left_corner + 10] = CRGB::Black;
   leds[middle_bottom_left_corner] = CRGB(r,g,b);
   leds[middle_bottom_right_corner] = CRGB(r,g,b);
   leds[left_bottom_left_corner] = CRGB(r,g,b);
@@ -429,9 +430,198 @@ void loop(){
   leds[middle_bottom_left_corner + 10] = CRGB::Black;
   leds[middle_bottom_right_corner - 10] = CRGB::Black;
   FastLED.show();
+  delay(300);
+  leds[middle_top_left_corner + 10] = CRGB(r,g,b);
+  leds[middle_top_right_corner - 10] = CRGB(r,g,b);
+  leds[middle_top_middle] = CRGB(r,g,b);
+  leds[middle_bottom_left_corner + 10] = CRGB(r,g,b);
+  leds[middle_bottom_right_corner - 10] = CRGB(r,g,b);
+  leds[left_top_left_corner + 10] = CRGB(r,g,b);
+  leds[left_top_right_corner - 10] = CRGB(r,g,b);
+  leds[left_top_right_corner + 10] = CRGB(r,g,b);
+  leds[left_bottom_left_corner + 10] = CRGB(r,g,b);
+  leds[right_top_left_corner + 10] = CRGB(r,g,b);
+  leds[right_top_right_corner - 10] = CRGB(r,g,b);
+  leds[right_top_right_corner + 10] = CRGB(r,g,b);
+  leds[right_bottom_left_corner + 10] = CRGB(r,g,b);
+  FastLED.show();
+  delay(250);
+  allLights.turnOff();
+  FastLED.show();
+  delay(100);
 
+  // 0:38
+  fourBeatLoop();
 
+  CRGB colorOne = CRGB::Blue;
+  CRGB colorTwo = CRGB::Red;
+
+  // 0:44
+  // TODO: Figure out required number of iterations
+  for (int i = 0; i < 25; i++ ) {
+    for (int i = 0; i < leds.length; i++) {
+      if (i % 2 == 0) {
+        leds[i] = colorOne;
+      } else {
+        leds[i] = colorTwo;
+      }
+    }
+    FastLED.show();
+    colorTwo = colorOne;
+    switch(colorOne) {
+      case CRGB::Blue:
+        colorOne = CRGB::Gold;
+        break; //optional
+      case CRGB::Gold:
+        colorOne = CRGB::Green;
+        break;
+      case CRGB::Green:
+        colorOne = CRGB::Pink;
+        break;
+      case CRGB::Pink:
+        colorOne = CRGB::Cyan;
+        break;
+      case CRGB::Cyan:
+        colorOne = CRGB::Purple;
+        break;
+      case CRGB::Purple;
+        colorOne = CRGB::White;
+        break;
+    }
+    delay(50-i);
+  }
+
+  // 0:50
+  rightBeforeDrop();
+
+  // WHEEW 0:51
+  traceOutMiddleTop();
 
   delay(20000);
 
+}
+
+// For 0:38
+void fourBeatLoop() {
+  // Set one
+  LightSegment leftSquareLeft = get_left_square_left(leds);
+  LightSegment rightSquareRight = get_right_square_right(leds);
+  LightSegment middleLeft = get_middle_left(leds);
+  LightSegment middleRight = get_middle_right(leds);
+  SegmentList setOne = SegmentList(&leftSquareLeft);
+  setOne.add(&rightSquareRight);
+  setOne.add(&middleLeft);
+  setOne.add(&middleRight);
+
+  // Set two
+  LightSegment leftSquareRight = get_left_square_right(leds);
+  LightSegment rightSquareLeft = get_right_square_left(leds);
+  SegmentList setTwo = SegmentList(&leftSquareRight);
+  setTwo.add(&rightSquareLeft);
+
+  // Set Three 
+  LightSegment leftBridge = get_left_bridge(leds);
+  LightSegment rightBridge = get_right_bridge(leds);
+  LightSegment middleTop = get_middle_top(leds);
+  SegmentList setThree = SegmentList(&leftBridge);
+  setThree.add(&rightBridge);
+  setThree.add(&middleTop);
+
+  // Set Four 
+  LightSegment leftSquareTop = get_left_square_top(leds);
+  LightSegment leftSquareBottom = get_left_square_bottom(leds);
+  LightSegment rightSquareTop = get_right_square_top(leds);
+  LightSegment rightSquareBottom = get_right_square_bottom(leds);
+  SegmentList setFour = SegmentList(&rightSquareBottom);
+  setFour.add(&rightSquareTop);
+  setFour.add(&leftSquareBottom);
+  setFour.add(&leftSquareTop);
+
+  LightSegment allLights = get_all_lights(leds);
+
+
+  // TODO: Update color scheme
+  int delayTime = 400;
+  for (int i = 0; i <= 2; i++) {
+    setOne.setAllToColor(CRGB::Purple);
+    FastLED.show();
+    delay(delayTime);
+    setOne.turnAllOff();
+    setTwo.setAllToColor(CRGB::Purple);
+    FastLED.show();
+    delay(delayTime);
+    setTwo.turnAllOff();
+    setThree.setAllToColor(CRGB::Purple);
+    FastLED.show();
+    delay(delayTime);
+    setThree.turnAllOff();
+    setFour.setAllToColor(CRGB::Purple);
+  }
+
+  setOne.setAllToColor(CRGB::Purple);
+  FastLED.show();
+  delay(delayTime);
+  setOne.turnAllOff();
+  setTwo.setAllToColor(CRGB::Purple);
+  FastLED.show();
+  delay(delayTime);
+  setTwo.turnAllOff();
+  setThree.setAllToColor(CRGB::Purple);
+  FastLED.show();
+  delay(delayTime);
+  allLights.setAllToColor(CRGB::Purple);
+  FastLED.show();
+
+}
+
+void rightBeforeDrop() {
+  allLights.turnAllOff();
+
+  LightSegment leftSquareRight = get_left_square_right(leds);
+  LightSegment rightSquareLeft = get_right_square_left(leds);
+
+  LightSegment leftSquareTop = get_left_square_top(leds);
+  LightSegment rightSquareTop = get_right_square_top(leds);
+
+  LightSegment leftSquareLeft = get_left_square_left(leds);
+  LightSegment rightSquareRight = get_right_square_right(leds);
+
+  LightSegment leftSquareBottom = get_left_square_bottom(leds);
+  LightSegment rightSquareBottom = get_right_square_bottom(leds);
+
+  LightSegment middleLeftMiddle = LightSegment(leds, middle_bottom_left_corner + 5, middle_bottom_left_corner + 15);
+  LightSegment middleRightMiddle = LightSegment(leds, middle_top_right_corner + 5, middle_top_right_corner + 15);
+
+  CRGB color = CRGB::Purple;
+  // TODO: Decide color later
+  leftSquareRight.setToColor(color);
+  rightSquareLeft.setToColor(color);
+  FastLED.show();
+  delay(375);
+  leftSquareTop.setToColor(color);
+  rightSquareTop.setToColor(color);
+  FastLED.show();
+  delay(300);
+  leftSquareLeft.setToColor(color);
+  rightSquareRight.setToColor(color);
+  FastLED.show();
+  delay(200);
+  leftSquareBottom.setToColor(color);
+  rightSquareBottom.setToColor(color);
+  FastLED.show();
+  delay(300);
+  middleLeftMiddle.setToColor(color);
+  middleRightMiddle.setToColor(color);
+  FastLED.show();
+
+}
+
+void traceOutMiddleTop() {
+  LightSegment middleTopLeft = get_middle_top_left(leds);
+  LightSegment middleTopRight = get_middle_top_right(leds);
+  SegmentList middleTops = SegmentList(&middleTopLeft);
+  middleTops.add(&middleTopRight);
+  boolean reverseTable[2] = {false, true};
+  // TODO: Fix timing for the 15, and update color
+  middleTops.traceAllDontRemain(5, 15, reverseTable, CRGB::Purple);
 }
