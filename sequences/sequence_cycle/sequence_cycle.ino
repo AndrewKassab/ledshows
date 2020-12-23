@@ -16,7 +16,7 @@ void loop() {
   struct tm *aTime = localtime(&theTime);
   int hour = aTime->tm_hour;
 
-  FastLED.setBrightness(200);
+  FastLED.setBrightness(100);
 
   square_color_trace(leds_list, 1, 22, CRGB::Purple);
   square_color_trace(leds_list, 1, 22, CRGB::Yellow);
