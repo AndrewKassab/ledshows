@@ -51,4 +51,12 @@ void loop() {
 
   squares.fadeAllDown(25);
 
+  squares_left_right_dash_up_down(leds_list, 17, CRGB::Blue, CRGB::Red);
+  squares_left_right_dash_up_down(leds_list, 17, CRGB::DeepPink,
+  CRGB::ForestGreen);
+  squares_left_right_dash_up_down(leds_list, 17, CRGB::Cyan, CRGB::Gold);
+  squares_left_right_dash_up_down(leds_list, 17, CRGB::Purple, CRGB::Green);
+
+
+
 }

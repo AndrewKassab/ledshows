@@ -393,21 +393,22 @@ void loop(){
   delayTime = 175;
   
   // 0:35
-  leds[left_top_right_corner + 10] = CRGB::(r,g,b);
-  leds[right_top_left_corner - 10] = CRGB::(r,g,b);
+  leds[left_top_right_corner + 10] = CRGB(r,g,b);
+  leds[right_top_left_corner - 10] = CRGB(r,g,b);
   FastLED.show();
   delay(delayTime);
-  leds[left_top_left_corner + 10] = CRGB::(r,g,b);
-  leds[right_top_right_corner - 10] = CRGB::(r,g,b);
+  leds[left_top_left_corner + 10] = CRGB(r,g,b);
+  leds[right_top_right_corner - 10] = CRGB(r,g,b);
   FastLED.show();
   delay(delayTime);
-  leds[left_bottom_left_corner + 10] = CRGB::(r,g,b);
-  leds[right_bottom_right_corner - 10] = CRGB::(r,g,b);
+  leds[left_bottom_left_corner + 10] = CRGB(r,g,b);
+  leds[right_bottom_right_corner - 10] = CRGB(r,g,b);
+  FastLED.show();
+  delay(350);
+  leds[left_top_right_corner - 10] = CRGB(r,g,b);
+  leds[right_top_left_corner + 10] = CRGB(r,g,b);
   FastLED.show();
   delay(300);
-  leds[left_top_right_corner - 10] = CRGB::(r,g,b);
-  leds[right_top_left_corner + 10] = CRGB::(r,g,b);
-  delay(250);
   FastLED.show();
   leds[left_top_left_corner + 10] = CRGB(r,g,b);
   leds[left_top_right_corner - 10] = CRGB(r,g,b);
@@ -425,29 +426,39 @@ void loop(){
   leds[right_bottom_right_corner] = CRGB::Black;
   leds[middle_top_left_corner] = CRGB::Black;
   leds[middle_top_right_corner] = CRGB::Black;
+  leds[left_top_left_corner] = CRGB::Black;
+  leds[left_top_right_corner] = CRGB::Black;
+  leds[right_top_left_corner] = CRGB::Black;
+  leds[right_top_right_corner] = CRGB::Black;
   leds[middle_top_left_corner + 10] = CRGB(r,g,b);
   leds[middle_top_right_corner - 10] = CRGB(r,g,b);
   leds[middle_top_middle] = CRGB(r,g,b);
   leds[middle_bottom_left_corner + 10] = CRGB(r,g,b);
   leds[middle_bottom_right_corner - 10] = CRGB(r,g,b);
   FastLED.show();
-  delay(300);
+  delay(450);
   leds[middle_bottom_left_corner] = CRGB(r,g,b);
   leds[middle_bottom_right_corner] = CRGB(r,g,b);
   leds[left_bottom_left_corner] = CRGB(r,g,b);
   leds[left_bottom_right_corner] = CRGB(r,g,b);
   leds[right_bottom_left_corner] = CRGB(r,g,b);
   leds[right_bottom_right_corner] = CRGB(r,g,b);
+  leds[left_top_left_corner] = CRGB(r,g,b);
+  leds[left_top_right_corner] = CRGB(r,g,b);
+  leds[right_top_left_corner] = CRGB(r,g,b);
+  leds[right_top_right_corner] = CRGB(r,g,b);
   leds[middle_top_left_corner] = CRGB(r,g,b);
   leds[middle_top_right_corner] = CRGB(r,g,b);
   FastLED.show();
-  delay(250);
+  delay(300);
   allLights.turnOff();
   FastLED.show();
-  delay(100);
+  delay(125);
 
   // 0:38
   fourBeatLoop();
+
+  delay(150);
 
 
   CRGB colors[8] = {CRGB::Blue, CRGB::Red, CRGB::Gold, CRGB::Green, CRGB::Cyan, CRGB::DeepPink, CRGB::White, CRGB::Purple};
@@ -455,9 +466,9 @@ void loop(){
   CRGB colorTwo = colors[0];
 
   // 0:44
-  // TODO: Figure out required number of iterations
-  for (int i = 0; i < 25; i++ ) {
-    for (int j = 0; j < sizeof(leds)/sizeof(leds[0]); j++) {
+  FastLED.setBrightness(80);
+  for (int i = 92; i > 0; i-- ) {
+    for (int j = 1; j < sizeof(leds)/sizeof(leds[0]); j++) {
       if (j % 2 == 0) {
         leds[j] = colorOne;
       } else {
@@ -467,13 +478,25 @@ void loop(){
     FastLED.show();
     colorTwo = colorOne;
     colorOne = colors[i % 8];
+    delay(i);
   }
+  
+  FastLED.setBrightness(255);
+
+  delay(200);
 
   // 0:50
   rightBeforeDrop();
 
+  delay(300);
+
   // WHEEW 0:51
   traceOutMiddleTop();
+
+  allLights.turnOff();
+  FastLED.show();
+
+  trace_to_center(leds, 4, 5, CRGB::Blue);
 
   delay(20000);
 
@@ -519,7 +542,7 @@ void fourBeatLoop() {
 
 
   // TODO: Update color scheme
-  int delayTime = 450;
+  int delayTime = 460;
   for (int i = 0; i <= 2; i++) {
     setFour.turnAllOff();
     setOne.setAllToColor(CRGB::Purple);
@@ -557,19 +580,21 @@ void fourBeatLoop() {
 }
 
 void rightBeforeDrop() {
-  allLights.turnAllOff();
+  get_all_lights(leds).turnOff();
 
-  LightSegment leftSquareRight = get_left_square_right(leds);
-  LightSegment rightSquareLeft = get_right_square_left(leds);
+  LightSegment leftSquareRight = get_left_square_top_right_corner(leds, 5);
+  LightSegment rightSquareLeft = get_right_square_top_left_corner(leds, 5);
 
-  LightSegment leftSquareTop = get_left_square_top(leds);
-  LightSegment rightSquareTop = get_right_square_top(leds);
+  LightSegment leftSquareTop = get_left_square_top_left_corner(leds, 5);
+  LightSegment rightSquareTop = get_right_square_top_right_corner(leds, 5);
 
-  LightSegment leftSquareLeft = get_left_square_left(leds);
-  LightSegment rightSquareRight = get_right_square_right(leds);
+  LightSegment leftSquareLeft = get_left_square_bottom_left_corner(leds, 5);
+  LightSegment rightSquareRight = get_right_square_bottom_right_corner(leds, 5);
 
-  LightSegment leftSquareBottom = get_left_square_bottom(leds);
-  LightSegment rightSquareBottom = get_right_square_bottom(leds);
+  LightSegment leftSquareBottom = LightSegment(leds, start, start + 5);
+  LightSegment leftSquareBottom2 = LightSegment(leds, left_bottom_right_corner - 5, left_bottom_right_corner);
+  LightSegment rightSquareBottom = LightSegment(leds, end - 5, end);
+  LightSegment rightSquareBottom2 = LightSegment(leds, right_bottom_left_corner, right_bottom_left_corner + 5);
 
   LightSegment middleLeftMiddle = LightSegment(leds, middle_bottom_left_corner + 5, middle_bottom_left_corner + 15);
   LightSegment middleRightMiddle = LightSegment(leds, middle_top_right_corner + 5, middle_top_right_corner + 15);
@@ -589,7 +614,9 @@ void rightBeforeDrop() {
   FastLED.show();
   delay(200);
   leftSquareBottom.setToColor(color);
+  leftSquareBottom2.setToColor(color);
   rightSquareBottom.setToColor(color);
+  rightSquareBottom2.setToColor(color);
   FastLED.show();
   delay(300);
   middleLeftMiddle.setToColor(color);
@@ -603,7 +630,7 @@ void traceOutMiddleTop() {
   LightSegment middleTopRight = get_middle_top_right(leds);
   SegmentList middleTops = SegmentList(&middleTopLeft);
   middleTops.add(&middleTopRight);
-  boolean reverseTable[2] = {false, true};
+  boolean reverseTable[2] = {true, false};
   // TODO: Fix timing for the 15, and update color
   middleTops.traceAllDontRemain(5, 15, reverseTable, CRGB::Purple);
 }
