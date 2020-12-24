@@ -12,7 +12,6 @@ void loop(){
   allLights.turnOff();
   FastLED.show();
   FastLED.setBrightness(255);
-  /*
 
   // TODO: intro
   delay(12050);
@@ -494,12 +493,10 @@ void loop(){
   // WHEEW 0:51
   traceOutMiddleTop();
 
+  //delay(550);
+
   allLights.turnOff();
   FastLED.show();
-
-  */
-
-  delay(550);
 
   trace_to_center(leds, 7, 4, CRGB::Blue);
   trace_out_from_center(leds, 7, 4, CRGB::Blue);
@@ -538,7 +535,7 @@ void loop(){
 
   FastLED.show();
 
-  delay(1600);
+  delay(1650);
   allLights.turnOff();
 
   up_down_trace(leds, 4, 2, CRGB::Green, CRGB::Blue);
@@ -685,5 +682,5 @@ void traceOutMiddleTop() {
   middleTops.add(&middleTopRight);
   boolean reverseTable[2] = {true, false};
   // TODO: Fix timing for the 15, and update color
-  middleTops.traceAllDontRemain(5, 15, reverseTable, CRGB::Purple);
+  middleTops.traceAllDontRemain(5, 14, reverseTable, CRGB::Purple);
 }
