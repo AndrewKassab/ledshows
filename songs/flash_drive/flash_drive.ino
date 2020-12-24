@@ -11,7 +11,8 @@ void loop(){
   LightSegment allLights = get_all_lights(leds);
   allLights.turnOff();
   FastLED.show();
-  FastLED.setBrightness(150);
+  FastLED.setBrightness(255);
+  /*
 
   // TODO: intro
   delay(12050);
@@ -496,7 +497,59 @@ void loop(){
   allLights.turnOff();
   FastLED.show();
 
-  trace_to_center(leds, 4, 5, CRGB::Blue);
+  */
+
+  delay(550);
+
+  trace_to_center(leds, 7, 4, CRGB::Blue);
+  trace_out_from_center(leds, 7, 4, CRGB::Blue);
+  trace_bridges_to_center(leds, 7, 4, CRGB::Blue);
+  trace_out_from_center(leds, 7, 5, CRGB::Blue);
+  trace_bridges_to_center(leds, 7, 5, CRGB::Blue);
+
+  delay(375);
+
+  left_right_trace(leds, 4, 2, CRGB::Red, CRGB::Green);
+  delay(200);
+  left_right_trace(leds, 4, 2, CRGB::Red, CRGB::Green);
+  delay(100);
+  left_right_trace(leds, 4, 2, CRGB::Red, CRGB::Green);
+  delay(150);
+  allLights.turnOff();
+
+  leds[left_bottom_left_corner] = CRGB::Green;
+  leds[left_bottom_left_corner - 1] = CRGB::Green;
+  leds[left_bottom_left_corner - 2] = CRGB::Green;
+  leds[left_top_right_corner] = CRGB::Green;
+  leds[left_top_right_corner - 1] = CRGB::Green;
+  leds[left_top_right_corner - 2] = CRGB::Green;
+  leds[middle_bottom_left_corner] = CRGB::Green;
+  leds[middle_bottom_left_corner + 2] = CRGB::Green;
+  leds[middle_bottom_left_corner + 1] = CRGB::Green;
+  leds[middle_bottom_right_corner] = CRGB::Green;
+  leds[middle_bottom_right_corner - 2] = CRGB::Green;
+  leds[middle_bottom_right_corner - 1] = CRGB::Green;
+  leds[right_top_left_corner] = CRGB::Green;
+  leds[right_top_left_corner + 2] = CRGB::Green;
+  leds[right_top_left_corner + 1] = CRGB::Green;
+  leds[right_bottom_right_corner] = CRGB::Green;
+  leds[right_bottom_right_corner + 1] = CRGB::Green;
+  leds[right_bottom_right_corner + 2] = CRGB::Green;
+
+  FastLED.show();
+
+  delay(1600);
+  allLights.turnOff();
+
+  up_down_trace(leds, 4, 2, CRGB::Green, CRGB::Blue);
+  delay(250);
+  up_down_trace(leds, 4, 2, CRGB::Green, CRGB::Blue);
+  delay(150);
+  up_down_trace(leds, 4, 2, CRGB::Green, CRGB::Blue);
+
+
+
+
 
   delay(20000);
 
