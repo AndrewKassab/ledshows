@@ -11,9 +11,10 @@ void loop(){
   LightSegment allLights = get_all_lights(leds);
   allLights.turnOff();
   FastLED.show();
-  FastLED.setBrightness(255);
+  FastLED.setBrightness(160);
 
   // TODO: intro
+  /*
   delay(12050);
 
   int delayTime = 250;
@@ -481,7 +482,7 @@ void loop(){
     delay(i);
   }
   
-  FastLED.setBrightness(255);
+  FastLED.setBrightness(180);
 
   delay(200);
 
@@ -493,7 +494,9 @@ void loop(){
   // WHEEW 0:51
   traceOutMiddleTop();
 
-  //delay(550);
+  */ 
+
+  delay(550); // This is a part of the first pause for dev only
 
   allLights.turnOff();
   FastLED.show();
@@ -522,6 +525,7 @@ void loop(){
   leds[left_top_right_corner - 2] = CRGB::Green;
   leds[middle_bottom_left_corner] = CRGB::Green;
   leds[middle_bottom_left_corner + 2] = CRGB::Green;
+  leds[middle_bottom_left_corner + 3] = CRGB::Green;
   leds[middle_bottom_left_corner + 1] = CRGB::Green;
   leds[middle_bottom_right_corner] = CRGB::Green;
   leds[middle_bottom_right_corner - 2] = CRGB::Green;
@@ -535,18 +539,57 @@ void loop(){
 
   FastLED.show();
 
-  delay(1650);
+  delay(1800);
   allLights.turnOff();
 
-  up_down_trace(leds, 4, 2, CRGB::Green, CRGB::Blue);
+  up_down_trace(leds, 5, 2, CRGB::Green, CRGB::Blue);
   delay(250);
-  up_down_trace(leds, 4, 2, CRGB::Green, CRGB::Blue);
+  up_down_trace(leds, 5, 2, CRGB::Green, CRGB::Blue);
   delay(150);
-  up_down_trace(leds, 4, 2, CRGB::Green, CRGB::Blue);
+  up_down_trace(leds, 5, 2, CRGB::Green, CRGB::Blue);
+  delay(100);
+  allLights.turnOff();
+  FastLED.show();
 
+  delay(2150);
 
+  color_trace_to_center(leds, 6, CRGB::Purple);
+  color_trace_outwards_from_center(leds, 6, CRGB::Blue);
+  square_color_trace(leds, 1, 6, CRGB::Purple);
+  color_trace_bridges_to_center(leds, 6, CRGB::Purple);
+  color_trace_outwards_from_center(leds, 6, CRGB::Blue);
+  square_color_trace(leds, 1, 6, CRGB::Purple);
+  color_trace_bridges_to_center(leds, 6, CRGB::Purple);
+  color_trace_outwards_from_center(leds, 6, CRGB::Blue);
+  square_color_trace(leds, 1, 5, CRGB::Purple);
+  color_trace_bridges_to_center(leds, 5, CRGB::Purple);
+  color_trace_outwards_from_center(leds, 5, CRGB::Blue);
 
+  allLights.fadeToBlack(16);
 
+  leds[left_bottom_left_corner] = CRGB::Gold;
+  leds[right_bottom_right_corner] = CRGB::Gold;
+  FastLED.show();
+  delay(200);
+  leds[left_top_left_corner] = CRGB::Gold;
+  leds[right_top_right_corner] = CRGB::Gold;
+  FastLED.show();
+  delay(530);
+  leds[left_bottom_right_corner] = CRGB::Gold;
+  leds[right_bottom_left_corner] = CRGB::Gold;
+  FastLED.show();
+  delay(200);
+  leds[left_top_right_corner] = CRGB::Gold;
+  leds[right_top_left_corner] = CRGB::Gold;
+  FastLED.show();
+  delay(530);
+  leds[middle_bottom_left_corner] = CRGB::Gold;
+  leds[middle_bottom_right_corner] = CRGB::Gold;
+  FastLED.show();
+  delay(200);
+  leds[middle_top_left_corner] = CRGB::Gold;
+  leds[middle_top_right_corner] = CRGB::Gold;
+  FastLED.show();
 
   delay(20000);
 
